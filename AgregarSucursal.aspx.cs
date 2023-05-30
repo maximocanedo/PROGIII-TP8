@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entity;
+using BusinessLogic;
 
 namespace TrabajoPractico5 {
     public partial class AgregarSucursal : System.Web.UI.Page {
@@ -21,12 +23,17 @@ namespace TrabajoPractico5 {
              * btnAceptar (Button)
              */
             if(!IsPostBack) {
-                DataSet provincias = Provincia.ObtenerProvincias();
-                ddlProvincias.DataSource = provincias.Tables[0];
-                ddlProvincias.DataValueField = "Id_Provincia";
-                ddlProvincias.DataTextField = "DescripcionProvincia";
-                ddlProvincias.DataBind();
-                ddlProvincias.Items.Insert(0, new ListItem("Seleccioná una provincia", "__NoProvinceSelected"));
+                Response operacion = ProvinciaLogic.ObtenerProvincias();
+                if(!operacion.ErrorFound && operacion.ObjectReturned != null) {
+                    DataSet provincias = (DataSet)operacion.ObjectReturned;
+                    ddlProvincias.DataSource = provincias.Tables[0];
+                    ddlProvincias.DataValueField = "Id_Provincia";
+                    ddlProvincias.DataTextField = "DescripcionProvincia";
+                    ddlProvincias.DataBind();
+                    ddlProvincias.Items.Insert(0, new ListItem("Seleccioná una provincia", "__NoProvinceSelected"));
+                } else {
+                    MostrarMensaje("Hubo un error al intentar cargar las provincias. " + operacion.Details);
+                }
             }
             
         }
@@ -39,13 +46,13 @@ namespace TrabajoPractico5 {
         }
         protected void btnAceptar_Click(object sender, EventArgs e) {
             var miSucursal = new Sucursal() {
-                nombre = tbNombreSucursal.Text,
-                descripcion = tbDescripcion.Text,
-                provincia = new Provincia() { id = int.Parse(ddlProvincias.SelectedValue) },
-                direccion = tbDireccion.Text
+                Nombre = tbNombreSucursal.Text,
+                Descripcion = tbDescripcion.Text,
+                Provincia = int.Parse(ddlProvincias.SelectedValue),
+                Direccion = tbDireccion.Text
             };
-            var response = miSucursal.Escribir();
-            if (response.FilasAfectadas == 1) {
+            var response = SucursalLogic.Escribir(miSucursal);
+            if (response.AffectedRows == 1) {
                 LimpiarCampos();
                 MostrarMensaje("El registro se ha agregado con éxito. ");
             }

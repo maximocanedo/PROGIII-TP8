@@ -21,7 +21,7 @@ namespace BusinessLogic {
         public static string Table { get { return "Sucursal"; } }
         public SucursalLogic() {
         }
-        public Response Escribir(Sucursal obj) {
+        public static Response Escribir(Sucursal obj) {
             Connection cn = new Connection(Connection.Database.BDSucursales);
             return cn.Response.ErrorFound
                 ? cn.Response
