@@ -39,7 +39,7 @@ namespace BusinessLogic {
                         { "@direccion", obj.Direccion }
                     });
         }
-        public Response Eliminar(Sucursal obj) {
+        public static Response Eliminar(Sucursal obj) {
             Connection cn = new Connection(Connection.Database.BDSucursales);
             return cn.Response.ErrorFound
                 ? cn.Response

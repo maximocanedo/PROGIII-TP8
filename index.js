@@ -47,15 +47,15 @@ window.MostrarMensaje = (mensaje) => {
 };
 window.onload = (() => {
     let header = new Header({
-        title: "Trabajo Práctico N.º 5",
-        group: "Grupo N.º 5",
+        title: "Trabajo Práctico N.º 8",
+        group: "Resolución de Máximo Canedo",
         links: [
             ["Agregar sucursal", "./AgregarSucursal.aspx"],
             ["Ver sucursales", "./ListadoSucursales.aspx"],
             ["Eliminar sucursales", "./EliminarSucursal.aspx"]
         ],
         otherLinks: [
-            ["Repositorio", "https://github.com/maximocanedo/PROGIII-TP5"],
+            ["Repositorio", "https://github.com/maximocanedo/PROGIII-TP8"],
             ["Foro", "about:blank"]
         ]
     });

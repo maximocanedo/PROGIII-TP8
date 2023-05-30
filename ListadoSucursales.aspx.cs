@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entity;
+using BusinessLogic;
 
 namespace TrabajoPractico5 {
  
@@ -14,11 +16,16 @@ namespace TrabajoPractico5 {
             ScriptManager.RegisterStartupScript(this, GetType(), "MostrarMensaje", script, true);
         }
         protected void CargarDatos(bool seFiltra = false) {
-            DataSet sucursales = seFiltra ?
-                Sucursal.FiltrarSucursalesPorID(int.Parse(tbBuscarPorID.Text)) :
-                Sucursal.ObtenerSucursales();
-            gvSucursales.DataSource = sucursales.Tables["root"];
-            gvSucursales.DataBind();
+            Response operacion = seFiltra
+                ? SucursalLogic.FiltrarSucursalesPorID(int.Parse(tbBuscarPorID.Text))
+                : SucursalLogic.ObtenerSucursales();
+            if(!operacion.ErrorFound && operacion.ObjectReturned != null) {
+                DataSet sucursales = (DataSet)operacion.ObjectReturned;
+                gvSucursales.DataSource = sucursales.Tables["root"];
+                gvSucursales.DataBind();
+            } else {
+                MostrarMensaje("Hubo un error al intentar obtener los datos. Detalles: " + operacion.Details);
+            }
         }
         protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
@@ -27,7 +34,7 @@ namespace TrabajoPractico5 {
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e) {
-            MostrarMensaje("¡Evento click del @btnBuscar activado!");
+            //MostrarMensaje("¡Evento click del @btnBuscar activado!");
             CargarDatos(true);
         }
     }

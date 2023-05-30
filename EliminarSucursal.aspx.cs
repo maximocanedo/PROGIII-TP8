@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entity;
+using BusinessLogic;
 
 namespace TrabajoPractico5 {
     
@@ -17,13 +19,13 @@ namespace TrabajoPractico5 {
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e) {
-            var miSucursal = new Sucursal() { id = int.Parse(tbIDSucursal.Text) };
-            var response = miSucursal.Eliminar();
+            var miSucursal = new Sucursal() { Id = int.Parse(tbIDSucursal.Text) };
+            var response = SucursalLogic.Eliminar(miSucursal);
             tbIDSucursal.Text = "";
             MostrarMensaje(
-                response.FilasAfectadas == 1 
-                ? "El registro #" + miSucursal.id + " fue eliminado exitósamente de la base de datos. "
-                : "Hubo un problema al intentar eliminar el registro especificado. "
+                    response.AffectedRows == 1 
+                    ? $"El registro #{miSucursal.Id} fue eliminado exitósamente de la base de datos. "
+                    : $"Hubo un problema al intentar eliminar el registro especificado. Detalles: {response.Details}"
                 );
             
         }
