@@ -13,7 +13,7 @@ namespace Negocio
 {
     class ProvinciaNegocio
     {
-        public TransactionResponse Escribir(bool simple = true, Provincia prov )
+        public TransactionResponse Escribir(Provincia prov, bool simple = true)
         {
             Conexion cn = new Conexion();
             string query = "";

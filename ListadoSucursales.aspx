@@ -17,7 +17,7 @@
 <body>
     <form id="form1" class="agregarSucursal" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <br>
+        <br/>
         <h1 class="mdc-typography--headline4">Todas las sucursales</h1>
         <div class="flex-horizontal">
             <label class="mdc-text-field mdc-text-field--outlined">

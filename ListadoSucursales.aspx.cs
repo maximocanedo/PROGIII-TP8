@@ -15,8 +15,8 @@ namespace TrabajoPractico5 {
         }
         protected void CargarDatos(bool seFiltra = false) {
             DataSet sucursales = seFiltra ?
-                Sucursal.FiltrarSucursalesPorID(int.Parse(tbBuscarPorID.Text)) :
-                Sucursal.ObtenerSucursales();
+            Sucursal.FiltrarSucursalesPorID(int.Parse(tbBuscarPorID.Text)) :
+            Sucursal.ObtenerSucursales();
             gvSucursales.DataSource = sucursales.Tables["root"];
             gvSucursales.DataBind();
         }
@@ -31,9 +31,6 @@ namespace TrabajoPractico5 {
             CargarDatos(true);
         }
 
-        protected System.Void Page_Load(System.Object sender, System.EventArgs e)
-        {
-
-        }
+     
     }
 }

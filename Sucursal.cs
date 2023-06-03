@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Data;
 
-namespace TrabajoPractico5 {
+namespace TrabajoPractico5
+{
     public class Sucursal {
         public int id { get; set; }
         public string nombre { get; set; }
@@ -72,7 +64,7 @@ namespace TrabajoPractico5 {
             sucursales = cn.ObtenerDatos("SELECT [Id_Sucursal] as ID,[NombreSucursal] as Nombre,[DescripcionSucursal] as [Descripción],Provincia.DescripcionProvincia as [Provincia],[DireccionSucursal] as [Dirección]FROM [Sucursal] INNER JOIN dbo.Provincia ON Sucursal.Id_ProvinciaSucursal = Provincia.Id_Provincia WHERE Id_Sucursal = @id", dict);
             return sucursales;
         }
-
+       
 
     }
 }

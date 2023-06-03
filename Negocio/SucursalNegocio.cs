@@ -18,7 +18,7 @@ namespace Negocio
         }
 
 
-        public TransactionResponse Escribir(bool simple = true, Sucursal suc)
+        public TransactionResponse Escribir( Sucursal suc, bool simple = true)
         {
             Conexion cn = new Conexion();
             string query = "";
