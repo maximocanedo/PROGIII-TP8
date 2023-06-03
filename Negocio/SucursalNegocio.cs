@@ -10,7 +10,7 @@ using Datos;
 
 namespace Negocio
 {
-    class SucursalNegocio
+    public class SucursalNegocio
     {
         public SucursalNegocio()
         {
@@ -18,7 +18,7 @@ namespace Negocio
         }
 
 
-        public TransactionResponse Escribir( Sucursal suc, bool simple = true)
+        public static TransactionResponse Escribir( Sucursal suc, bool simple = true)
         {
             Conexion cn = new Conexion();
             string query = "";
@@ -37,7 +37,7 @@ namespace Negocio
             return res;
         }
 
-        public TransactionResponse Eliminar(Sucursal suc)
+        public static TransactionResponse Eliminar(Sucursal suc)
         {
             Conexion cn = new Conexion();
             string query = "DELETE FROM Sucursal WHERE Id_Sucursal = @id";

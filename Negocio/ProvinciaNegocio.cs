@@ -11,7 +11,7 @@ using Datos;
 
 namespace Negocio
 {
-    class ProvinciaNegocio
+    public class ProvinciaNegocio
     {
         public TransactionResponse Escribir(Provincia prov, bool simple = true)
         {
@@ -43,7 +43,7 @@ namespace Negocio
         }
 
 
-        public static DataSet ObtenerProvincia()
+        public static DataSet ObtenerProvincias()
         {
             DataSet sucursales = new DataSet();
             Conexion cn = new Conexion();

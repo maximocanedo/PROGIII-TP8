@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entidades;
+using Negocio;
 
 namespace TrabajoPractico5 {
     public partial class AgregarSucursal : System.Web.UI.Page {
@@ -21,7 +23,7 @@ namespace TrabajoPractico5 {
              * btnAceptar (Button)
              */
             if(!IsPostBack) {
-                DataSet provincias = Provincia.ObtenerProvincias();
+                DataSet provincias = ProvinciaNegocio.ObtenerProvincias();
                 ddlProvincias.DataSource = provincias.Tables[0];
                 ddlProvincias.DataValueField = "Id_Provincia";
                 ddlProvincias.DataTextField = "DescripcionProvincia";
@@ -39,12 +41,12 @@ namespace TrabajoPractico5 {
         }
         protected void btnAceptar_Click(object sender, EventArgs e) {
             var miSucursal = new Sucursal() {
-                nombre = tbNombreSucursal.Text,
-                descripcion = tbDescripcion.Text,
-                provincia = new Provincia() { id = int.Parse(ddlProvincias.SelectedValue) },
-                direccion = tbDireccion.Text
+                Nombre1 = tbNombreSucursal.Text,
+                Descripcion1 = tbDescripcion.Text,
+                IDProvincia1 = int.Parse(ddlProvincias.SelectedValue),
+                Direccion1 = tbDireccion.Text
             };
-            var response = miSucursal.Escribir();
+            var response = SucursalNegocio.Escribir(miSucursal);
             if (response.FilasAfectadas == 1) {
                 LimpiarCampos();
                 MostrarMensaje("El registro se ha agregado con éxito. ");
