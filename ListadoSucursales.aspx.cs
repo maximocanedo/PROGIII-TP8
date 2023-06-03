@@ -30,5 +30,10 @@ namespace TrabajoPractico5 {
             MostrarMensaje("¡Evento click del @btnBuscar activado!");
             CargarDatos(true);
         }
+
+        protected System.Void Page_Load(System.Object sender, System.EventArgs e)
+        {
+
+        }
     }
 }
