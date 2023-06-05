@@ -30,7 +30,7 @@
                 </span>
                 <asp:TextBox ID="tbBuscarPorID" CssClass="mdc-text-field__input" aria-labelledby="my-label-id1" runat="server"></asp:TextBox>
               </label>
-            <asp:LinkButton ID="btnBuscar" CssClass="mdc-button mdc-button--raised" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
+            <asp:LinkButton ID="btnBuscar" CssClass="mdc-button mdc-button--raised" runat="server" Text="Buscar" OnClick="FiltraSucursales" />
         </div>
         <br />
         <asp:GridView ID="gvSucursales" CssClass="mdc-typography--body2" runat="server"></asp:GridView>
