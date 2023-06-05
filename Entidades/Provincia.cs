@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Provincia
+    public class Provincia
     {
+        private int ID;
+        private String Descripcion;
+
+        public Provincia()
+        {
+
+        }
+
+        public int ID1 { get => ID; set => ID = value; }
+        public string Descripcion1 { get => Descripcion; set => Descripcion = value; }
     }
 }
