@@ -19,7 +19,7 @@ namespace DAO
 
         private SqlConnection ObtenerConexion()
         {
-            SqlConnection conexion = new SqlConnection(rutaBDNeptuno);
+            SqlConnection conexion = new SqlConnection(rutaBDSucursales);
             try
             {
                 conexion.Open();

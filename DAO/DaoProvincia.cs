@@ -33,68 +33,56 @@ namespace DAO
             return tabla;
         }
 
-        /*
-         CÓDIGO DE REFERENCIA:
-        public DataTable getTablaCategorias()
-        {
-           // List<Categoria> lista = new List<Categoria>();
-            DataTable tabla = ds.ObtenerTabla("Categoria", "Select * from categorías");
-            return tabla;
-        }
-
-        public int eliminarCategoria(Categoria cat)
-        {
-            SqlCommand comando = new SqlCommand();
-            ArmarParametrosCategoriaEliminar(ref comando, cat);
-            return ds.EjecutarProcedimientoAlmacenado(comando, "spEliminarCategoria");
-        }
-
-
-        public int agregarCategoria(Categoria cat)
-        {
-           
-            cat.setIdCategoria(ds.ObtenerMaximo("SELECT max(idCategoría) FROM Categorías")+1);
-            SqlCommand comando = new SqlCommand();
-            ArmarParametrosCategoriaAgregar(ref comando, cat);
-            return ds.EjecutarProcedimientoAlmacenado(comando, "spAgregarCategoria");
-        }
-
-        private void ArmarParametrosCategoriaEliminar(ref SqlCommand Comando, Categoria cat)
+        private void ArmarParametrosProvinciaEliminar(ref SqlCommand Comando, Provincia prov)
         {
             SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = Comando.Parameters.Add("@IDCATEGORIA", SqlDbType.Int);
-            SqlParametros.Value = cat.getIdCategoria();
+            SqlParametros = Comando.Parameters.Add("@IDPROVINCIA", SqlDbType.Int);
+            SqlParametros.Value = prov.getID();
         }
 
-        private void ArmarParametrosCategoriaAgregar(ref SqlCommand Comando, Categoria cat)
+        public int eliminarProvincia(Provincia prov)
+        {
+            SqlCommand comando = new SqlCommand();
+            ArmarParametrosProvinciaEliminar(ref comando, prov);
+            return ad.EjecutarProcedimientoAlmacenado(comando, "spEliminarProvincia");
+        }
+
+        private void ArmarParametrosProvinciaAgregar(ref SqlCommand Comando, Provincia prov)
         {
             SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = Comando.Parameters.Add("@IDCATEGORIA", SqlDbType.Int);
-            SqlParametros.Value = cat.getIdCategoria();
-            SqlParametros = Comando.Parameters.Add("@NOMBRECAT", SqlDbType.VarChar);
-            SqlParametros.Value = cat.getNombreCategoria();
+            SqlParametros = Comando.Parameters.Add("@IDPROVINCIA", SqlDbType.Int);
+            SqlParametros.Value = prov.getID();
+            SqlParametros = Comando.Parameters.Add("@DESCRIPCIONPROV", SqlDbType.VarChar);
+            SqlParametros.Value = prov.getDescripcion();
         }
-        */
 
+        public int agregarProvincia(Provincia prov)
+        {
+            prov.setID(ad.ObtenerMaximo("SELECT MAX(Id_Provincia) FROM Provincia") + 1);
+            SqlCommand comando = new SqlCommand();
+            ArmarParametrosProvinciaAgregar(ref comando, prov);
+            return ad.EjecutarProcedimientoAlmacenado(comando, "spAgregarProvincia");
+        }
+
+        
+        // AGREGAR ESTOS PROCEDIMIENTOS ALMACENADOS EN LA BD:
         /*
-        CREATE PROCEDURE[dbo].[spEliminarCategoria]
+        CREATE PROCEDURE[dbo].[spEliminarProvincia]
         (
-               @IDCATEGORIA INT
-               )
-               AS
-        DELETE Categorías WHERE IdCategoría = @IDCATEGORIA
+            @IDPROVINCIA INT
+        ) AS
+        DELETE Provincia WHERE Id_Provincia = @IDPROVINCIA
         RETURN
         */
 
         /*
-       CREATE PROCEDURE[dbo].[spAgregarCategoria]
+        CREATE PROCEDURE[dbo].[spAgregarProvincia]
         (
-        @IDCATEGORIA INT,
-        @NOMBRECAT NVARCHAR(15)
-        )
-        AS
-        INSERT INTO CATEGORÍAS(IdCategoría,NombreCategoría) VALUES(@IDCATEGORIA,@NOMBRECAT)
-        RETURN
+        @IDPROVINCIA INT,
+        @DESCRIPCIONPROV VARCHAR(50)
+        ) AS
+        INSERT INTO Provincia(Id_Provincia, DescripcionProvincia) VALUES(@IDPROVINCIA, @DESCRIPCIONPROV)
+        RETURN   
         */
     }
 }
