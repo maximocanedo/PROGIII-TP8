@@ -47,7 +47,7 @@ window.MostrarMensaje = (mensaje) => {
 };
 window.onload = (() => {
     let header = new Header({
-        title: "Trabajo Práctico N.º 5",
+        title: "Trabajo Práctico N.º 8",
         group: "Grupo N.º 5",
         links: [
             ["Agregar sucursal", "./AgregarSucursal.aspx"],
@@ -55,8 +55,8 @@ window.onload = (() => {
             ["Eliminar sucursales", "./EliminarSucursal.aspx"]
         ],
         otherLinks: [
-            ["Repositorio", "https://github.com/maximocanedo/PROGIII-TP5"],
-            ["Foro", "about:blank"]
+            ["Repositorio", "https://github.com/maximocanedo/PROGIII-TP8"],
+            ["Foro", "https://frgp.cvg.utn.edu.ar/mod/forum/discuss.php?d=158819"]
         ]
     });
     header.putOnPage();

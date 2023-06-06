@@ -3,14 +3,30 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+    <head runat="server">
+    <!-- Título y descripción -->
+    <title>Eliminar Sucursal · T.P. N.º 8</title>
+    <meta name="description" content="
+        Página 'Eliminar Sucursal' del Trabajo Práctico N.º 8 para la materia Programación III. 
+        Universidad Tecnológica Nacional, Facultad Regional General Pacheco. 
+        Repositorio disponible aquí:  https://github.com/maximocanedo/PROGIII-TP8" />
+    <!-- Integrantes -->
+    <meta name="author" content="Ezequiel Martínez" />
+    <meta name="author" content="Javier Torales" />
+    <meta name="author" content="Jean Pierre Esquén" />
+    <meta name="author" content="María Olivia Hanczyc" />
+    <meta name="author" content="Máximo Canedo" />
+    <!-- Otras metaetiquetas útiles -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Material Design</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Librerías utilizadas -->
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet" />
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <!-- Archivos usados -->
+    <link rel="icon" href="utn.ico" type="image/x-icon" />
     <link href="./styles.css" rel="stylesheet" />
     <script src="./index.js"></script>
 </head>
