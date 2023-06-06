@@ -62,7 +62,7 @@ namespace DAO
             cmd.Connection = Conexion;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = NombreSP;
-            FilasCambiadas = cmd.ExecuteNonQuery();
+            FilasCambiadas = cmd.ExecuteNonQuery(); // acá está el problema con el procedimiento almacenado.
             Conexion.Close();
             return FilasCambiadas;
         }

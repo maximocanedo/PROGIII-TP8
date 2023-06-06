@@ -69,11 +69,15 @@ namespace DAO
         {
             suc.setID(ad.ObtenerMaximo("SELECT MAX(Id_Sucursal) FROM Sucursal") + 1);
             SqlCommand comando = new SqlCommand();
-            ArmarParametrosSucursalAgregar(ref comando, suc);
-            return ad.EjecutarProcedimientoAlmacenado(comando, "spAgregarSucursal");
+            if (!existeSucursal(suc))
+            {
+                ArmarParametrosSucursalAgregar(ref comando, suc);
+                return ad.EjecutarProcedimientoAlmacenado(comando, "spAgregarSucursal");
+            }
+            else { return 0; }
         }
 
-        // AGREGAR ESTOS PROCEDIMIENTOS ALMACENADOS EN LA BD:
+        // AGREGAR ESTOS PROCEDIMIENTOS ALMACENADOS EN LA BD (MEDIANTE UNA CONSULTA SQL):
         /*
         CREATE PROCEDURE[dbo].[spEliminarSucursal]
         (

@@ -64,8 +64,8 @@ namespace DAO
             return ad.EjecutarProcedimientoAlmacenado(comando, "spAgregarProvincia");
         }
 
-        
-        // AGREGAR ESTOS PROCEDIMIENTOS ALMACENADOS EN LA BD:
+
+        // AGREGAR ESTOS PROCEDIMIENTOS ALMACENADOS EN LA BD (MEDIANTE UNA CONSULTA SQL):
         /*
         CREATE PROCEDURE[dbo].[spEliminarProvincia]
         (

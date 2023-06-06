@@ -40,19 +40,17 @@ namespace Negocio
             else { return false; }
         }
 
-        public bool agregarSucursal(String nombre)
+        public bool agregarSucursal(String nombre, String descripcion, int provincia, String direccion)
         {
             DaoSucursal dao = new DaoSucursal();
             Sucursal suc = new Sucursal();
             suc.setNombre(nombre);
+            suc.setDireccion(descripcion);
+            suc.setProvincia(provincia);
+            suc.setDireccion(direccion);
             // Verifico si el ID existe en la Base de Datos:
-            if (!dao.existeSucursal(suc))
-            {
-                int filasAfectadas = dao.agregarSucursal(suc);
-                if (filasAfectadas == 1) { return true; }
-                else { return false; }
-            }
-            else { return false;  }
+            if (dao.agregarSucursal(suc) == 1) { return true; }
+            else { return false; }
         }
     }
 }
